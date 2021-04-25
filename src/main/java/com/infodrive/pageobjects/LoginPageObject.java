@@ -7,9 +7,11 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import static com.utilities.UtilityMethods.*;
 
 import com.utilities.BaseTest;
 import com.utilities.DataReader;
@@ -28,7 +30,7 @@ public static By passwordTextField=By.xpath("//input[@type='password']");
 
 public static By loginButton=By.xpath("//button[text()='Sign in']");
 
-
+public static By logoutButton =By.xpath("(//p//i)[5]//..//..//..//following-sibling::ul//li//span[text()='Log Out']");
 public static void LoginToApplication() throws IOException
 {
 	HashMap<String,String > map =DataReader.credentialsReader();
@@ -40,10 +42,19 @@ public static void LoginToApplication() throws IOException
 	 
 	}
 	String url=driver.getCurrentUrl();
-	driver.findElement(usernameTextField).sendKeys(username);
-	driver.findElement(passwordTextField).sendKeys(password);
-	driver.findElement(loginButton).click();
+	enterDataInTextBox(usernameTextField, driver, username);
+	enterDataInTextBox(passwordTextField, driver, password);
+	takeScreenshot();
+	clickOnTheElement(loginButton, driver);
 
+
+}
+public static void LogoutFromApplication()
+{
+	Actions a =new Actions(driver);
+	a.moveToElement(driver.findElement(By.xpath("(//p//i)[5]"))).perform();
+	clickOnTheElement(logoutButton, driver);
+	driver.close();
 }
 
 }

@@ -53,6 +53,24 @@ public class DataReader {
 		map.put(username, password);
 		return map;
 	}
+	public static String generateUrl() throws IOException
+	{
+		String data="";
+		  FileReader reader;
+		try {
+			reader = new FileReader("Data.properties");
 	
+	      
+		    Properties p=new Properties();  
+		    p.load(reader);  
+		      
+		     data =p.getProperty("url");
+		}
+		    catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			}  
+		return data;
+	}
 	
 }
