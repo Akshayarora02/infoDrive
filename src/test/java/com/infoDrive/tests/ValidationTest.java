@@ -104,12 +104,27 @@ public void validationtest3() throws IOException, InterruptedException
 		}
 	
 }
+	@Test(description=" Delete Validation" ,priority=5,groups="Validation" )
+	public void validationtest8() throws IOException, InterruptedException
+	{
+		boolean status=ValidationPageObject.deleteFunctionalityValidation();
+		if(!status)
+		{
+			System.out.println("The validation has been successfully deleted");
+			AssertJUnit.assertTrue(true);
+		}
+		else
+		{
+			System.out.println("NOt found,Please check data !!!!");
+			AssertJUnit.assertTrue(false);
+		}
 	
+}
 	
 @AfterSuite
 public void doAfterTest()
 {
-	//LoginPageObject.LogoutFromApplication();
+	LoginPageObject.LogoutFromApplication();
 }
 
 }

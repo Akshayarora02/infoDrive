@@ -21,7 +21,9 @@ public class ValidationPageObject extends BaseTest {
 	public static By listGroupValidation = By
 			.xpath(" //a[contains(text(),'List Group') and contains(@href,'validation')]");
 	public static String editButton = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//button//i";
+	public static String editButton1 = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//button//i";
 	public static String deleteButton = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//following-sibling::button//i";
+	public static String deleteButton1 = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//following-sibling::button//i";
 	public static By validationTextField = By.xpath(" //input[@name='validation']");
 	public static By typeDropDown = By.xpath(" //select[@name='type']");
 	public static By combinatorsDropDown = By.xpath(" //select[@title='Combinators']");
@@ -43,6 +45,7 @@ public class ValidationPageObject extends BaseTest {
 	final String[] validationLinks = { "List", "Create Validation", "Create Group", "List Group" };
 	public static String verificationGroupcreated = "//td[text()='X']";
 	public static String finder = "//td[text()='X']";
+	public static String finder1 = "//td[text()='X']";
 	public static By returnContentsPresentInPage = By
 			.xpath("//table[@class='overflow-hidden table']//tbody//tr//td[1]");
 	public static By pageNumber1 = By.xpath("//a[text()='1']");
@@ -160,9 +163,19 @@ public class ValidationPageObject extends BaseTest {
 			}
 		}
 		deleteButton = deleteButton.replace("X", groupNameDelete);
+		try {
 		clickOnTheElement(deleteButton, driver);
+		Thread.sleep(2000);
 		driver.switchTo().alert().accept();
+		}
+		catch(Exception e)
+		{
+			System.out.print("Element not found");
+		return true;
+		}
+	
 		driver.switchTo().defaultContent();
+		Thread.sleep(6000);
 		driver.navigate().refresh();
 		Thread.sleep(5000);
 		waitUntilElementVisible(pageNumber1, driver);
@@ -212,10 +225,11 @@ public class ValidationPageObject extends BaseTest {
 
 	}
 	
-	public static ArrayList<String> listValidation()
+	public static ArrayList<String> listValidation() throws InterruptedException
 	{
 		ArrayList<String> list=new ArrayList<String>();
 	clickOnTheElement(list_validation, driver);	
+	Thread.sleep(5000);
 	waitUntilElementVisible(pageNumber1, driver);
 	scrollDownUntilElementVisible(addRuleButton, driver);
 	clickOnTheElement(pageNumber1, driver);
@@ -228,7 +242,7 @@ public class ValidationPageObject extends BaseTest {
 		if (attribute.contains("disabled")) {
 			stop = true;
 		}
-
+		
 	}
 	for (String s : list) {
 		System.out.println(s);
@@ -236,6 +250,60 @@ public class ValidationPageObject extends BaseTest {
 
 	return list;
 	
+	}
+	
+	public static boolean deleteFunctionalityValidation() throws IOException, InterruptedException
+	{
+		clickOnTheElement(pageNumber1, driver);
+
+		String groupNameDelete = DataReader.propertyFileReader("validationData.properties", "validationToBeDeleted");
+		finder1 = finder1.replace("X", groupNameDelete);
+		boolean stop = false;
+		scrollDownUntilElementVisible(By.xpath(finder1), driver);
+		boolean status = false;
+		status = isElementDisplayed(finder1, driver);
+		while (!stop) {
+			clickOnTheElement(paginationNext, driver);
+			status = isElementDisplayed(finder1, driver);
+			String attribute = getAttribute("class", listPageNext, driver);
+			if (attribute.contains("disabled") || status == true) {
+				stop = true;
+			}
+		}
+		deleteButton1 = deleteButton1.replace("X", groupNameDelete);
+		try {
+		clickOnTheElement(deleteButton1, driver);
+		Thread.sleep(2000);
+		driver.switchTo().alert().accept();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Element not found");
+			return true;
+		}
+			
+		driver.switchTo().defaultContent();
+		Thread.sleep(6000);
+		driver.navigate().refresh();
+		Thread.sleep(5000);
+		waitUntilElementVisible(pageNumber1, driver);
+		scrollDownUntilElementVisible(pageNumber1, driver);
+		clickOnTheElement(pageNumber1, driver);
+
+		boolean stop1 = false;
+		scrollDownUntilElementVisible(By.xpath(finder1), driver);
+		boolean status1 = false;
+		status1 = isElementDisplayed(finder1, driver);
+		while (!stop1) {
+			clickOnTheElement(paginationNext, driver);
+			status = isElementDisplayed(finder1, driver);
+			String attribute = getAttribute("class", listPageNext, driver);
+			if (attribute.contains("disabled") || status1 == true) {
+				stop1 = true;
+			}
+		}
+
+		return status1;	
 	}
 
 }

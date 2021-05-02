@@ -6,7 +6,7 @@
       <class name="com.infoDrive.tests.ValidationTest">
         <methods>
           <include name="doAfterTest"/>
-          <include name="validationtest7"/>
+          <include name="validationtest8"/>
           <include name="launch"/>
         </methods>
       </class> <!-- com.infoDrive.tests.ValidationTest -->

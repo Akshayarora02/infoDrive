@@ -1,41 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="6" passed="4" failed="0" skipped="0">
+<testng-results ignored="2" total="7" passed="4" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-05-02T12:54:00 IST" name="Default suite" finished-at="2021-05-02T12:59:22 IST" duration-ms="322234">
+  <suite started-at="2021-05-02T13:31:14 IST" name="Default suite" finished-at="2021-05-02T13:32:15 IST" duration-ms="60687">
     <groups>
       <group name="Validation">
-        <method signature="ValidationTest.validationtest7()[pri:5, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" name="validationtest7" class="com.infoDrive.tests.ValidationTest"/>
+        <method signature="ValidationTest.validationtest7()[pri:5, instance:com.infoDrive.tests.ValidationTest@3a71c100]" name="validationtest7" class="com.infoDrive.tests.ValidationTest"/>
+        <method signature="ValidationTest.validationtest8()[pri:5, instance:com.infoDrive.tests.ValidationTest@3a71c100]" name="validationtest8" class="com.infoDrive.tests.ValidationTest"/>
       </group> <!-- Validation -->
       <group name="Validation Group">
-        <method signature="ValidationTest.validationTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" name="validationTest" class="com.infoDrive.tests.ValidationTest"/>
-        <method signature="ValidationTest.validationtest2()[pri:1, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" name="validationtest2" class="com.infoDrive.tests.ValidationTest"/>
-        <method signature="ValidationTest.validationtest3()[pri:2, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" name="validationtest3" class="com.infoDrive.tests.ValidationTest"/>
+        <method signature="ValidationTest.validationTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@3a71c100]" name="validationTest" class="com.infoDrive.tests.ValidationTest"/>
+        <method signature="ValidationTest.validationtest2()[pri:1, instance:com.infoDrive.tests.ValidationTest@3a71c100]" name="validationtest2" class="com.infoDrive.tests.ValidationTest"/>
+        <method signature="ValidationTest.validationtest3()[pri:2, instance:com.infoDrive.tests.ValidationTest@3a71c100]" name="validationtest3" class="com.infoDrive.tests.ValidationTest"/>
       </group> <!-- Validation Group -->
     </groups>
-    <test started-at="2021-05-02T12:54:00 IST" name="Default test" finished-at="2021-05-02T12:59:22 IST" duration-ms="322234">
+    <test started-at="2021-05-02T13:31:14 IST" name="Default test" finished-at="2021-05-02T13:32:15 IST" duration-ms="60687">
       <class name="com.infoDrive.tests.ValidationTest">
-        <test-method is-config="true" signature="launch()[pri:0, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:54:00 IST" name="launch" finished-at="2021-05-02T12:54:05 IST" duration-ms="5375" status="PASS">
+        <test-method is-config="true" signature="launch()[pri:0, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:31:14 IST" name="launch" finished-at="2021-05-02T13:31:19 IST" duration-ms="4993" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launch -->
-        <test-method signature="validationTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:54:05 IST" name="validationTest" description="Create Group Test" finished-at="2021-05-02T12:54:36 IST" duration-ms="30861" status="PASS">
+        <test-method signature="validationTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:31:19 IST" name="validationTest" description="Create Group Test" finished-at="2021-05-02T13:31:31 IST" duration-ms="11731" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validationTest -->
-        <test-method signature="validationtest2()[pri:1, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:54:36 IST" name="validationtest2" description="Verify all the content should be visible on validation--list group window" finished-at="2021-05-02T12:55:17 IST" duration-ms="40902" status="PASS">
+        <test-method signature="validationtest2()[pri:1, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:31:31 IST" name="validationtest2" description="Verify all the content should be visible on validation--list group window" finished-at="2021-05-02T13:31:32 IST" duration-ms="1149" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validationtest2 -->
-        <test-method signature="validationtest3()[pri:2, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:55:17 IST" name="validationtest3" description=" delete functionality of group" finished-at="2021-05-02T12:55:59 IST" duration-ms="41866" status="PASS">
+        <test-method signature="validationtest3()[pri:2, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:31:32 IST" name="validationtest3" description=" delete functionality of group" finished-at="2021-05-02T13:32:04 IST" duration-ms="31985" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validationtest3 -->
-        <test-method signature="validationtest7()[pri:5, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:55:59 IST" name="validationtest7" description=" List Validation" finished-at="2021-05-02T12:59:22 IST" duration-ms="203175" status="PASS">
+        <test-method signature="validationtest7()[pri:5, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:32:04 IST" name="validationtest7" description=" List Validation" finished-at="2021-05-02T13:32:11 IST" duration-ms="6562" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validationtest7 -->
-        <test-method is-config="true" signature="doAfterTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@61a5b4ae]" started-at="2021-05-02T12:59:22 IST" name="doAfterTest" finished-at="2021-05-02T12:59:22 IST" duration-ms="0" status="PASS">
+        <test-method signature="validationtest8()[pri:5, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:32:11 IST" name="validationtest8" description=" Delete Validation" finished-at="2021-05-02T13:32:15 IST" duration-ms="4212" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 
+at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+at org.testng.AssertJUnit.assertTrue(AssertJUnit.java:23)
+at org.testng.AssertJUnit.assertTrue(AssertJUnit.java:33)
+at com.infoDrive.tests.ValidationTest.validationtest8(ValidationTest.java:119)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validationtest8 -->
+        <test-method is-config="true" signature="doAfterTest()[pri:0, instance:com.infoDrive.tests.ValidationTest@3a71c100]" started-at="2021-05-02T13:32:15 IST" name="doAfterTest" finished-at="2021-05-02T13:32:18 IST" duration-ms="3183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- doAfterTest -->
