@@ -72,5 +72,23 @@ public class DataReader {
 			}  
 		return data;
 	}
+	public static String propertyFileReader(String fileName,String fieldName) throws IOException
+	{
+		String data="";
+		  FileReader reader;
+		try {
+			reader = new FileReader(fileName);
 	
+	      
+		    Properties p=new Properties();  
+		    p.load(reader);  
+		      
+		     data =p.getProperty(fieldName);
+		}
+		    catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			}  
+		return data;
+	}
 }

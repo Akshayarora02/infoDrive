@@ -26,7 +26,7 @@ public void newJobSubmissionTest() throws IOException, InterruptedException
 }
 
 
-@AfterTest
+@AfterSuite
 public void doAfterTest()
 {
 	LoginPageObject.LogoutFromApplication();
