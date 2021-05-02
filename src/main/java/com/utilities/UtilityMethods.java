@@ -160,7 +160,18 @@ public static boolean isElementDisplayed(By weblement,WebDriver driver)
 		return list;
 		
 	}
-}
+	public static void clearTextBox(By xpath,WebDriver driver)
+	{
+		try
+		{
+		driver.findElement(xpath).clear();
+	}
+		catch(Exception e)
+		{
+			e.getMessage();
+		}
+	}
+	}
 
 
 

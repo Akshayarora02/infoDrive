@@ -24,7 +24,7 @@ public class ValidationPageObject extends BaseTest {
 	public static String editButton1 = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//button//i";
 	public static String deleteButton = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//following-sibling::button//i";
 	public static String deleteButton1 = " //td[contains(text(),'X')]//..//td[@class='edit_remove_btton']//a//following-sibling::button//i";
-	public static By validationTextField = By.xpath(" //input[@name='validation']");
+	public static By validationTextField = By.xpath("//input[@name='validation']");
 	public static By typeDropDown = By.xpath(" //select[@name='type']");
 	public static By combinatorsDropDown = By.xpath(" //select[@title='Combinators']");
 	public static By addRuleButton = By.xpath(" //button[@title='Add rule']");
@@ -46,6 +46,7 @@ public class ValidationPageObject extends BaseTest {
 	public static String verificationGroupcreated = "//td[text()='X']";
 	public static String finder = "//td[text()='X']";
 	public static String finder1 = "//td[text()='X']";
+	public static String finder2 = "//td[text()='X']";
 	public static By returnContentsPresentInPage = By
 			.xpath("//table[@class='overflow-hidden table']//tbody//tr//td[1]");
 	public static By pageNumber1 = By.xpath("//a[text()='1']");
@@ -305,5 +306,50 @@ public class ValidationPageObject extends BaseTest {
 
 		return status1;	
 	}
+public static void editFunctionalityValidation() throws IOException, InterruptedException
+{
+	scrollDownUntilElementVisible(pageNumber1, driver);
+	waitUntilElementVisible(pageNumber1, driver);
+	clickOnTheElement(pageNumber1, driver);
+	String validationTobeEdited = DataReader.propertyFileReader("validationData.properties", "validationTobeEdited");
+	finder2 = finder2.replace("X", validationTobeEdited);
+	boolean stop = false;
+	scrollDownUntilElementVisible(By.xpath(finder1), driver);
+	boolean status = false;
+	status = isElementDisplayed(finder1, driver);
+	while (!stop) {
+		clickOnTheElement(paginationNext, driver);
+		status = isElementDisplayed(finder1, driver);
+		String attribute = getAttribute("class", listPageNext, driver);
+		if (attribute.contains("disabled") || status == true) {
+			stop = true;
+		}
+	}
+	editButton1 = editButton1.replace("X", validationTobeEdited);
+	try
+	{
+		clickOnTheElement(editButton1, driver);
+		
+		
+	}
+	catch(Exception e)
+	{
+		System.out.println("Not found");
 
+	}
+	Thread.sleep(5000);
+	Random rand =new Random();
+	int n=rand.nextInt(1000);
+	String text = validationTobeEdited + n;
+	clearTextBox(validationTextField, driver);
+	enterDataInTextBox(validationTextField, driver, text);
+	clickOnTheElement(saveButton, driver);
+	
+	
+
+	
+	
+	
+	
+}
 }
