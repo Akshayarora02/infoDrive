@@ -91,4 +91,25 @@ public class DataReader {
 			}  
 		return data;
 	}
+	public static Object[][] propertyFileReader(String fileName) throws IOException
+	{
+		String[][] data = new String [1][2];
+		  FileReader reader;
+		try {
+			reader = new FileReader(fileName);
+	
+	      
+		    Properties p=new Properties();  
+		    p.load(reader);  
+		      
+		     data[0][0] =p.getProperty("NewUserEmail");
+		     data[0][1]=p.getProperty("password");
+		}
+		    catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			}  
+		return data;
+	}
+	
 }

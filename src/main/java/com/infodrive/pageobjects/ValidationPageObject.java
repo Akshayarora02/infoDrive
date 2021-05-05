@@ -52,7 +52,6 @@ public class ValidationPageObject extends BaseTest {
 	public static By pageNumber1 = By.xpath("//a[text()='1']");
 	public static By returnContentsPresentInPage1 = By
 			.xpath("//table[@class='overflow-hidden table']//tbody//tr//td[2]");
-	
 
 	public static boolean createGroup() throws IOException, InterruptedException {
 		groupNametoBeFilled = DataReader.propertyFileReader("validationData.properties", "groupName");
@@ -96,8 +95,6 @@ public class ValidationPageObject extends BaseTest {
 
 	public static ArrayList<String> verifyListOfGroupContents() {
 		ArrayList<String> list = new ArrayList<String>();
-//	waitUntilElementVisible(ConfigurationsPageObject.configurationsLink, driver);
-//	clickOnTheElement(ConfigurationsPageObject.configurationsLink, driver);
 		clickOnTheElement(listGroupValidation, driver);
 		clickOnTheElement(pageNumber1, driver);
 		boolean stop = false;
@@ -165,16 +162,14 @@ public class ValidationPageObject extends BaseTest {
 		}
 		deleteButton = deleteButton.replace("X", groupNameDelete);
 		try {
-		clickOnTheElement(deleteButton, driver);
-		Thread.sleep(2000);
-		driver.switchTo().alert().accept();
-		}
-		catch(Exception e)
-		{
+			clickOnTheElement(deleteButton, driver);
+			Thread.sleep(2000);
+			driver.switchTo().alert().accept();
+		} catch (Exception e) {
 			System.out.print("Element not found");
-		return true;
+			return true;
 		}
-	
+
 		driver.switchTo().defaultContent();
 		Thread.sleep(6000);
 		driver.navigate().refresh();
@@ -207,54 +202,48 @@ public class ValidationPageObject extends BaseTest {
 		String ruleType = DataReader.propertyFileReader("validationData.properties", "RuleType");
 		String property = DataReader.propertyFileReader("validationData.properties", "property");
 		String number = DataReader.propertyFileReader("validationData.properties", "number");
-		
+
 		clickOnTheElement(createValidation, driver);
 		enterDataInTextBox(validationTextField, driver, validationName);
-		Select dropdown=new Select(driver.findElement(typeDropDown));
+		Select dropdown = new Select(driver.findElement(typeDropDown));
 		dropdown.selectByVisibleText(validationType);
 		clickOnTheElement(addRuleButton, driver);
-		Select dropdown1=new Select(driver.findElement(fieldsdropdown));
+		Select dropdown1 = new Select(driver.findElement(fieldsdropdown));
 		dropdown1.selectByVisibleText(ruleType);
-		Select dropdown2=new Select(driver.findElement(operatorsdropdown));
+		Select dropdown2 = new Select(driver.findElement(operatorsdropdown));
 		dropdown2.selectByValue(property);
-		enterDataInTextBox(valueTextField, driver,number);
+		enterDataInTextBox(valueTextField, driver, number);
 		clickOnTheElement(saveButton, driver);
-		
-		
-		
-		
 
 	}
-	
-	public static ArrayList<String> listValidation() throws InterruptedException
-	{
-		ArrayList<String> list=new ArrayList<String>();
-	clickOnTheElement(list_validation, driver);	
-	Thread.sleep(5000);
-	waitUntilElementVisible(pageNumber1, driver);
-	scrollDownUntilElementVisible(addRuleButton, driver);
-	clickOnTheElement(pageNumber1, driver);
-	boolean stop = false;
-	while (!stop) {
-		getContentsOnPage(returnContentsPresentInPage, driver, list);
-		clickOnTheElement(paginationNext, driver);
 
-		String attribute = getAttribute("class", listPageNext, driver);
-		if (attribute.contains("disabled")) {
-			stop = true;
+	public static ArrayList<String> listValidation() throws InterruptedException {
+		ArrayList<String> list = new ArrayList<String>();
+		clickOnTheElement(list_validation, driver);
+		Thread.sleep(5000);
+		waitUntilElementVisible(pageNumber1, driver);
+		scrollDownUntilElementVisible(addRuleButton, driver);
+		clickOnTheElement(pageNumber1, driver);
+		boolean stop = false;
+		while (!stop) {
+			getContentsOnPage(returnContentsPresentInPage, driver, list);
+			clickOnTheElement(paginationNext, driver);
+
+			String attribute = getAttribute("class", listPageNext, driver);
+			if (attribute.contains("disabled")) {
+				stop = true;
+			}
+
 		}
-		
-	}
-	for (String s : list) {
-		System.out.println(s);
+		for (String s : list) {
+			System.out.println(s);
+		}
+
+		return list;
+
 	}
 
-	return list;
-	
-	}
-	
-	public static boolean deleteFunctionalityValidation() throws IOException, InterruptedException
-	{
+	public static boolean deleteFunctionalityValidation() throws IOException, InterruptedException {
 		clickOnTheElement(pageNumber1, driver);
 
 		String groupNameDelete = DataReader.propertyFileReader("validationData.properties", "validationToBeDeleted");
@@ -273,16 +262,14 @@ public class ValidationPageObject extends BaseTest {
 		}
 		deleteButton1 = deleteButton1.replace("X", groupNameDelete);
 		try {
-		clickOnTheElement(deleteButton1, driver);
-		Thread.sleep(2000);
-		driver.switchTo().alert().accept();
-		}
-		catch(Exception e)
-		{
+			clickOnTheElement(deleteButton1, driver);
+			Thread.sleep(2000);
+			driver.switchTo().alert().accept();
+		} catch (Exception e) {
 			System.out.println("Element not found");
 			return true;
 		}
-			
+
 		driver.switchTo().defaultContent();
 		Thread.sleep(6000);
 		driver.navigate().refresh();
@@ -304,52 +291,43 @@ public class ValidationPageObject extends BaseTest {
 			}
 		}
 
-		return status1;	
+		return status1;
 	}
-public static void editFunctionalityValidation() throws IOException, InterruptedException
-{
-	scrollDownUntilElementVisible(pageNumber1, driver);
-	waitUntilElementVisible(pageNumber1, driver);
-	clickOnTheElement(pageNumber1, driver);
-	String validationTobeEdited = DataReader.propertyFileReader("validationData.properties", "validationTobeEdited");
-	finder2 = finder2.replace("X", validationTobeEdited);
-	boolean stop = false;
-	scrollDownUntilElementVisible(By.xpath(finder1), driver);
-	boolean status = false;
-	status = isElementDisplayed(finder1, driver);
-	while (!stop) {
-		clickOnTheElement(paginationNext, driver);
+
+	public static void editFunctionalityValidation() throws IOException, InterruptedException {
+		scrollDownUntilElementVisible(pageNumber1, driver);
+		waitUntilElementVisible(pageNumber1, driver);
+		clickOnTheElement(pageNumber1, driver);
+		String validationTobeEdited = DataReader.propertyFileReader("validationData.properties",
+				"validationTobeEdited");
+		finder2 = finder2.replace("X", validationTobeEdited);
+		boolean stop = false;
+		scrollDownUntilElementVisible(By.xpath(finder1), driver);
+		boolean status = false;
 		status = isElementDisplayed(finder1, driver);
-		String attribute = getAttribute("class", listPageNext, driver);
-		if (attribute.contains("disabled") || status == true) {
-			stop = true;
+		while (!stop) {
+			clickOnTheElement(paginationNext, driver);
+			status = isElementDisplayed(finder1, driver);
+			String attribute = getAttribute("class", listPageNext, driver);
+			if (attribute.contains("disabled") || status == true) {
+				stop = true;
+			}
 		}
-	}
-	editButton1 = editButton1.replace("X", validationTobeEdited);
-	try
-	{
-		clickOnTheElement(editButton1, driver);
-		
-		
-	}
-	catch(Exception e)
-	{
-		System.out.println("Not found");
+		editButton1 = editButton1.replace("X", validationTobeEdited);
+		try {
+			clickOnTheElement(editButton1, driver);
+
+		} catch (Exception e) {
+			System.out.println("Not found");
+
+		}
+		Thread.sleep(5000);
+		Random rand = new Random();
+		int n = rand.nextInt(1000);
+		String text = validationTobeEdited + n;
+		clearTextBox(validationTextField, driver);
+		enterDataInTextBox(validationTextField, driver, text);
+		clickOnTheElement(saveButton, driver);
 
 	}
-	Thread.sleep(5000);
-	Random rand =new Random();
-	int n=rand.nextInt(1000);
-	String text = validationTobeEdited + n;
-	clearTextBox(validationTextField, driver);
-	enterDataInTextBox(validationTextField, driver, text);
-	clickOnTheElement(saveButton, driver);
-	
-	
-
-	
-	
-	
-	
-}
 }

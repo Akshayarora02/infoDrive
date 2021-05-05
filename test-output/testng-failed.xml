@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.infoDrive.tests.ValidationTest">
+      <class name="com.infoDrive.tests.RegistrationTest">
         <methods>
-          <include name="doAfterTest"/>
-          <include name="validationtest8"/>
           <include name="launch"/>
+          <include name="registration" invocation-numbers="0"/>
+          <include name="doAfterTest"/>
         </methods>
-      </class> <!-- com.infoDrive.tests.ValidationTest -->
+      </class> <!-- com.infoDrive.tests.RegistrationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
