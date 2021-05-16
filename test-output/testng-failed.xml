@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.infoDrive.tests.RegistrationTest">
+      <class name="com.infoDrive.tests.FieldMappingTest">
         <methods>
-          <include name="launch"/>
-          <include name="registration" invocation-numbers="0"/>
           <include name="doAfterTest"/>
+          <include name="editGroup"/>
+          <include name="deleteGroup"/>
+          <include name="launch"/>
+          <include name="test1" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.infoDrive.tests.RegistrationTest -->
+      </class> <!-- com.infoDrive.tests.FieldMappingTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

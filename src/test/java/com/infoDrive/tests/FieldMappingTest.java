@@ -19,12 +19,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.infodrive.pageobjects.ConfigurationsPageObject;
+import com.infodrive.pageobjects.FieldMappingPageObject;
 import com.infodrive.pageobjects.LoginPageObject;
 import com.infodrive.pageobjects.ValidationPageObject;
 import com.utilities.BaseTest;
 import com.utilities.UtilityMethods;
 
-public class ValidationTest extends BaseTest {
+public class FieldMappingTest extends BaseTest {
 
 	@BeforeTest
 
@@ -34,32 +35,32 @@ public class ValidationTest extends BaseTest {
 	}
 
 @Test
-public void validationTest1(ITestContext context) throws IOException, InterruptedException
+public void test1(ITestContext context) throws IOException, InterruptedException
 {
-	ValidationPageObject.navigateToValidations();
-String groupName=	ConfigurationsPageObject.createGroup("validationData.properties");
-	ValidationPageObject.creatingValidationAndVerifying();
+	FieldMappingPageObject.navigateToFieldMapping();
+String groupName=	ConfigurationsPageObject.createGroup("FieldMapping.properties");
+	FieldMappingPageObject.creatingFieldMappingAndVerifying();
 	ConfigurationsPageObject.listGroupsAndVerify(groupName);
 	context.setAttribute("groupName", groupName);
 }
 
-@Test(dependsOnMethods = "validationTest1")
-public void editValidationGroup(ITestContext context) throws InterruptedException
+@Test(dependsOnMethods = "test1")
+public void editGroup(ITestContext context) throws InterruptedException
 {
 String groupName=(String) context.getAttribute("groupName");
 groupName=ConfigurationsPageObject.editFunctionality(groupName);
 context.setAttribute("groupName", groupName);
 
 }
-@Test(dependsOnMethods = "editValidationGroup")
-public void deleteValidationGroup(ITestContext context) throws InterruptedException
+@Test(dependsOnMethods = "editGroup")
+public void deleteGroup(ITestContext context) throws InterruptedException
 {
 	String groupName=(String) context.getAttribute("groupName");
 	ConfigurationsPageObject.deleteFunctionality(groupName);
 }
 	@AfterSuite
 	public void doAfterTest() {
-	//	LoginPageObject.LogoutFromApplication();
+		LoginPageObject.LogoutFromApplication();
 	}
 
 }

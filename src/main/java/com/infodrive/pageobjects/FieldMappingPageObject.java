@@ -13,21 +13,23 @@ import com.utilities.BaseTest;
 import com.utilities.DataReader;
 import static com.utilities.UtilityMethods.*;
 
-public class ValidationPageObject extends BaseTest {
+public class FieldMappingPageObject extends BaseTest {
 
-	public static By validationLink = By.xpath(" //a[text()='Validation']");
+	public static By fieldMapping = By.xpath(" //a[text()='Field Mapping']");
 	public static By list_validation = By.xpath(" //a[text()='List' and contains(@href,'validation')]");
 	public static By createValidation = By.xpath("//a[contains(text(),'Create Validation')]");
-	public static By addValidation = By.xpath("//button[text()='Add Validation']");
-	public static By createGroupValidation = By
-			.xpath(" //a[contains(text(),'Create Group') and contains(@href,'validation')]");
-	public static By listGroupValidation = By
-			.xpath(" //a[contains(text(),'List Group') and contains(@href,'validation')]");
+	public static By addFieldMapping = By.xpath("//button[text()='Add Field Mapping']");
+	public static By createGroups = By
+			.xpath(" //a[contains(text(),'Create Group')]");
+	public static By listGroupFieldMapping = By
+			.xpath(" //a[contains(text(),'List Group')]");
 	public static String editButton = " //td[text()='X']//..//td[2]//button[1]";
 	public static String deleteButton = "//td[text()='X']//..//td[2]//div//following-sibling::button//i";
 
-	public static By validationTextField = By.xpath("//input[@name='validation']");
-	public static By typeDropDown = By.xpath(" //select[@name='type']");
+	public static By fieldTextField = By.xpath("//input[@name='fname']");
+	public static By sourceFieldNameTextField = By.xpath("//input[@name='sourceFieldName']");
+	
+	public static By targetFieldDropDown = By.xpath(" //select[@name='targetField']");
 	public static By combinatorsDropDown = By.xpath(" //select[@title='Combinators']");
 	public static By addRuleButton = By.xpath(" //button[@title='Add rule']");
 	public static By saveButton = By.xpath(" //button[text()='Save']");
@@ -46,7 +48,7 @@ public class ValidationPageObject extends BaseTest {
 	public static String groupNametoBeFilled = "";
 	final String[] validationLinks = { "List", "Create Validation", "Create Group", "List Group" };
 	public static String verificationGroupcreated = "//td[text()='X']";
-	public static String validationChecker = "//td[text()='X']";
+	public static String fieldMappingChecker = "//span[text()='X']";
 	public static String finder = "//td[text()='X']";
 	public static String finder1 = "//td[text()='X']";
 	public static String finder2 = "//td[text()='X']";
@@ -55,62 +57,40 @@ public class ValidationPageObject extends BaseTest {
 	public static By pageNumber1 = By.xpath("//a[text()='1']");
 	public static By returnContentsPresentInPage1 = By
 			.xpath("//table[@class='overflow-hidden table']//tbody//tr//td[2]");
-	public static void navigateToValidations() throws InterruptedException
-	{
-		Thread.sleep(9000);
-		waitUntilElementVisible(ConfigurationsPageObject.configurationsLink, driver);
-		clickOnTheElement(ConfigurationsPageObject.configurationsLink, driver);
-		clickOnTheElement(validationLink, driver);
-	}
 
-
-	public static void creatingValidationAndVerifying() throws InterruptedException, IOException {
-
-		Thread.sleep(5000);
-		String validationName = DataReader.propertyFileReader("validationData.properties", "validationName");
-
-		String validationType = DataReader.propertyFileReader("validationData.properties", "validationType");
-		String ruleType = DataReader.propertyFileReader("validationData.properties", "RuleType");
-		String property = DataReader.propertyFileReader("validationData.properties", "property");
-		String number = DataReader.propertyFileReader("validationData.properties", "number");
-
-		clickOnTheElement(addValidation, driver);
-		clearTextBox(validationTextField, driver);
-		enterDataInTextBox(validationTextField, driver, validationName);
-		Select dropdown = new Select(driver.findElement(typeDropDown));
-		dropdown.selectByVisibleText(validationType);
+public static void navigateToFieldMapping() throws InterruptedException
+{
+	Thread.sleep(5000);
+	waitUntilElementVisible(ConfigurationsPageObject.configurationsLink, driver);
+	clickOnTheElement(ConfigurationsPageObject.configurationsLink, driver);
+	clickOnTheElement(fieldMapping, driver);
+}
+	public static void creatingFieldMappingAndVerifying() throws InterruptedException, IOException {
+Thread.sleep(3000);
+		String fieldMappingName = DataReader.propertyFileReader("FieldMapping.properties", "fieldMappingName");
+		String sourceFieldName = DataReader.propertyFileReader("FieldMapping.properties", "sourceFieldName");
+		String targetFieldName = DataReader.propertyFileReader("FieldMapping.properties", "targetFieldName");
+		clickOnTheElement(addFieldMapping, driver);
+		clearTextBox(fieldTextField, driver);
+		enterDataInTextBox(fieldTextField, driver, fieldMappingName);
+		clearTextBox(sourceFieldNameTextField, driver);
+		enterDataInTextBox(sourceFieldNameTextField, driver, sourceFieldName);
+		Select dropdown = new Select(driver.findElement(targetFieldDropDown));
+		dropdown.selectByVisibleText(targetFieldName);
 
 		clickOnTheElement(saveButton, driver);
-		Thread.sleep(5000);
+		Thread.sleep(9000);
 //checking whether validation has created or not 
-		validationChecker = validationChecker.replace("X", validationName);
-		boolean status = isElementDisplayed(validationChecker, driver);
+		fieldMappingChecker = fieldMappingChecker.replace("X", fieldMappingName);
+		boolean status = isElementDisplayed(fieldMappingChecker, driver);
 
 		Assert.assertEquals(status, true);
+
+		
+		clickOnTheElement(submitButton, driver);
 		Thread.sleep(5000);
 	}
 
-	public static ArrayList<String> verifyListOfGroupContents() {
-		ArrayList<String> list = new ArrayList<String>();
-		clickOnTheElement(listGroupValidation, driver);
-		clickOnTheElement(pageNumber1, driver);
-		boolean stop = false;
-		while (!stop) {
-			getContentsOnPage(returnContentsPresentInPage, driver, list);
-			clickOnTheElement(paginationNext, driver);
 
-			String attribute = getAttribute("class", listPageNext, driver);
-			if (attribute.contains("disabled")) {
-				stop = true;
-			}
-
-		}
-		for (String s : list) {
-			System.out.println(s);
-		}
-
-		return list;
-
-	}
-
+	
 }
